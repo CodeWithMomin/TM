@@ -1,0 +1,79 @@
+/* Centering the Profile Page */
+*{
+    font-family: 'QuickSand';
+}
+.profile-container {
+    max-width: 400px;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    background: #0a0a0a;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Profile Header */
+  .profile-header {
+    margin-bottom: 20px;
+  }
+  
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #007bff;
+  }
+  
+  /* Profile Stats */
+  .profile-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+  }
+  
+  .stat-box {
+    background: rgb(10, 10, 10);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Profile Settings */
+  .profile-settings button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .logout-btn {
+    background: #FFA500;
+    color: black;
+  }
+  
+  /* ✅ Responsive Design */
+  @media (max-width: 600px) {
+    .profile-container {
+      width: 95%;
+      max-width: 350px;
+      padding: 15px;
+    }
+  
+    .profile-stats {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .stat-box {
+      width: 80%;
+      margin-bottom: 10px;
+    }
+  }
+  

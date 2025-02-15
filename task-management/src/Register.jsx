@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Header from './Header'
+import axios from 'axios'
+
 import { ClipLoader, ScaleLoader } from 'react-spinners'
 const Register = () => {
   const [name,setname]=useState("")
@@ -13,13 +15,27 @@ const Register = () => {
     // console.log("Submitted:", { name, email, password });
     const userData = { name, role,email, password };
     setloading(true)
-    setTimeout(() => {
-      setloading(false)
-     }, 5000);
-    console.log(userData);
-    
+    // setTimeout(() => {
+    //   setloading(false)
+    //  }, 5000);
+    // console.log(userData);
+    axios.post('http://localhost:4000/register',{
+      name,
+      email,
+      role,
+      password
+    }).then(()=>{
+      console.log("success");
+      setTimeout(() => {
+        setloading(false);
+      }, 1000);
+    })
+    .catch(()=>{
+      console.log("failure");
+      setloading(false);
+    })
     // You can add form validation or send data to an API here
-    alert("Form submitted successfully!");
+    // alert("Form submitted successfully!");
   };
   return (
     <div>

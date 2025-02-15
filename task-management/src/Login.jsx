@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Header from './Header';
 import { ScaleLoader } from 'react-spinners';
+import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -10,17 +11,23 @@ const Login = () => {
 
   const handlebtnclk = async (e) => {
     e.preventDefault(); // Prevents form reload
-    setloading(true)
-    setTimeout(() => {
-     setloading(false)
-    }, 5000);
-    
-    const userData = { email, password };
-    console.log("User Data:", userData);
+    setloading(true);
 
-  
-   
-  };
+    try {
+        await axios.post('http://localhost:4000/login', {
+            email,
+            password
+        });
+        console.log("success");
+      //  / Set loading to false on success
+      setTimeout(() => {
+        setloading(false);
+      }, 1000);
+    } catch (error) {
+        console.log("failure");
+        setloading(false); // Set loading to false on error
+    }
+};
 
   return (
     <div>

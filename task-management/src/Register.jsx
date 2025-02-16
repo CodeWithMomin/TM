@@ -1,37 +1,47 @@
 import React, { useState } from 'react'
 import Header from './Header'
 import axios from 'axios'
-
+import { ToastContainer, toast } from 'react-toastify';
 import { ClipLoader, ScaleLoader } from 'react-spinners'
+import { useNavigate } from 'react-router-dom';
 const Register = () => {
   const [name,setname]=useState("")
   const [email,setemail]=useState("")
   const [password,setpassword]=useState("")
   const [role,setrole]=useState("")
   const [loading ,setloading]=useState(false)
- 
-  const handleSubmit = (e) => {
+ const navigate=useNavigate()
+  const handleSubmit = async (e) => {
     e.preventDefault(); // Prevents page reload
     // console.log("Submitted:", { name, email, password });
+    if (!name || !role || !email || !password) {
+      return toast.error("All fields are required! ❌"); // ✅ Basic validation
+      
+    }
     const userData = { name, role,email, password };
     setloading(true)
     // setTimeout(() => {
     //   setloading(false)
     //  }, 5000);
     // console.log(userData);
-    axios.post('http://localhost:4000/register',{
+    const response=await axios.post('http://localhost:4000/register',{
       name,
       email,
       role,
       password
     }).then(()=>{
       console.log("success");
+      toast.success("Registration  successfull! 🎉");
+      
       setTimeout(() => {
         setloading(false);
+        navigate('/login')
       }, 1000);
+      
     })
     .catch(()=>{
       console.log("failure");
+      toast.error("Something went wrong! 😞"); // ✅ Catch error toast
       setloading(false);
     })
     // You can add form validation or send data to an API here
@@ -89,7 +99,7 @@ const Register = () => {
     </div>
   </form>
 </div>
-
+<ToastContainer position="top-center" autoClose={5000} theme="dark" />
     </div>
   )
 }

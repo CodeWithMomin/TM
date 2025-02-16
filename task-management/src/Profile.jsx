@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
-
+import { useNavigate } from 'react-router-dom';
 const Profile = () => {
   const [user, setUser] = useState({
     name: "John Doe",
@@ -10,7 +10,11 @@ const Profile = () => {
     tasksPending: 10,
     lastLogin: "2 days ago",
   });
-
+  const navigate=useNavigate()
+const logout=()=>{
+  localStorage.removeItem('authToken');
+    navigate('/login')
+}
   return (
     <div className="parent">
         <div className="profile-container">
@@ -35,9 +39,9 @@ const Profile = () => {
 
       {/* Settings */}
       <div className="profile-settings">
-        <button>Update Password</button>
+        <button disabled>Update Password</button>
         
-        <button className="logout-btn">Logout</button>
+        <button className="logout-btn" onClick={logout}>Logout</button>
       </div>
     </div>
     </div>

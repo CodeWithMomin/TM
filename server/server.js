@@ -1,4 +1,5 @@
 const express=require('express')
+require('dotenv').config();
 const jwt=require('jsonwebtoken')
 const {body,validationResult}=require('express-validator')
 const User = require('./Models/User')
@@ -42,8 +43,18 @@ app.post('/login',body('email','password').notEmpty(),async(req,res)=>{
         }
         const {email,password}=req.body;
         console.log(email,password);
+        const compareUser=await User.find({email:email,password:password})
+        if(compareUser.length>0)
+        {
+            const token=jwt.sign({name:compareUser[0].name},process.env.JWT_SECRET);
+            return res.status(200).send({token});
+            
+        }
+        else{
+            res.status(401).send({ message: 'Invalid credentials' });
+        }
         // res.send(email)
-       return res.status(200).send({ message: "ok" });
+       
         
 })
 

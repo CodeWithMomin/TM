@@ -10,7 +10,7 @@ import Pending from './OtherPages/Pending'
 import Total from './OtherPages/Total'
 const App = () => {
   const isAuthenticated = () => {
-    return localStorage.getItem("token") !== null; // Check if token exists
+    return localStorage.getItem("authToken") !== null; // Check if token exists
   };
   const ProtectedRoute = ({ children }) => { 
     // here children is the component inside protected Route

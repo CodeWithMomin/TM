@@ -3,31 +3,46 @@ import './App.css';
 import Header from './Header';
 import { ScaleLoader } from 'react-spinners';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading ,setloading]=useState(false)
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handlebtnclk = async (e) => {
     e.preventDefault(); // Prevents form reload
-    setloading(true);
+    setLoading(true);
 
     try {
-        await axios.post('http://localhost:4000/login', {
-            email,
-            password
-        });
-        console.log("success");
-      //  / Set loading to false on success
-      setTimeout(() => {
-        setloading(false);
-      }, 1000);
+      const response = await axios.post('http://localhost:4000/login', {
+        email,
+        password
+      });
+
+      const token = response.data.token;
+      // Check if token exists
+      if (token) {
+        localStorage.setItem('authToken', token);
+        toast.success("Redirecting🎉");
+
+        // Add a slight delay before navigating to allow the toast to show
+        setTimeout(() => {
+          navigate('/');
+        }, 1000);  // Wait for 1 second before redirecting
+      } else {
+        toast.error("Token not received");
+      }
+      
     } catch (error) {
-        console.log("failure");
-        setloading(false); // Set loading to false on error
+      console.log("failure");
+      toast.error("Invalid Credentials 😞"); // Display error toast
+    } finally {
+      setLoading(false); // Set loading to false after operation
     }
-};
+  };
 
   return (
     <div>
@@ -58,13 +73,12 @@ const Login = () => {
 
           {/* Submit Button */}
           <div className="btndiv">
-            <button type="submit">  {loading ? (
+            <button type="submit">
+              {loading ? (
                 <div className="loader-container">
-                 
                   <ScaleLoader
                     color="rgb(7, 7, 7)"
                     loading={loading}
-                    // cssOverride={override}
                     size={140}
                     aria-label="Loading Spinner"
                     data-testid="loader"
@@ -72,10 +86,12 @@ const Login = () => {
                 </div>
               ) : (
                 "Sign In"
-              )}</button>
+              )}
+            </button>
           </div>
         </form>
       </div>
+      <ToastContainer position="top-center" autoClose={5000} theme="dark" />
     </div>
   );
 };

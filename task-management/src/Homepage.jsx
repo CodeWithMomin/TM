@@ -11,31 +11,36 @@ const Homepage = () => {
     { id: 2, title: 'Task 2', completed: true },
     { id: 3, title: 'Task 3', completed: false },
   ]);
+const [title,settitle]=useState('')
+const [description,setDescription]=useState('')
+const [tasktype,settasktype]=useState('')
 
-  const [newTask, setNewTask] = useState('');
+  
 
   const addTask = () => {
-    if (newTask.trim()) {
-      const newId = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1;
-      setTasks([...tasks, { id: newId, title: newTask, completed: false }]);
-      setNewTask('');
+    // if (newTask.trim()) {
+    //   const newId = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1;
+    //   setTasks([...tasks, { id: newId, title: newTask, completed: false }]);
+    //   setNewTask('');
+    console.log(title,description,tasktype);
+    
     }
-  };
+  // };
 
-  const toggleTask = (index) => {
-    const updatedTasks = [...tasks];
-    updatedTasks[index].completed = !updatedTasks[index].completed;
-    setTasks(updatedTasks);
-  };
+  // const toggleTask = (index) => {
+  //   const updatedTasks = [...tasks];
+  //   updatedTasks[index].completed = !updatedTasks[index].completed;
+  //   setTasks(updatedTasks);
+  // };
 
-  const editTask = (index) => {
-    setNewTask(tasks[index].title);
-    deleteTask(index);
-  };
+  // const editTask = (index) => {
+  //   setNewTask(tasks[index].title);
+  //   deleteTask(index);
+  // };
 
-  const deleteTask = (index) => {
-    setTasks((prevTasks) => prevTasks.filter((_, i) => i !== index));
-  };
+  // const deleteTask = (index) => {
+  //   setTasks((prevTasks) => prevTasks.filter((_, i) => i !== index));
+  // };
 
   return (
     <>
@@ -59,17 +64,25 @@ const Homepage = () => {
               className="task-input"
               placeholder="Title"
               required
-              value={newTask}
-              onChange={(e) => setNewTask(e.target.value)} 
+             name='title'
+              onChange={(e) => settitle(e.target.value)} 
             />
             <br />
             <input
               className="task-input"
               placeholder="Description"
               required
+              name='description'
+              onChange={(e)=>{
+                setDescription(e.target.value)
+              }}
             />
             <br />
-            <input type="text" className="task-input" placeholder="Task Type" required />
+            <input type="text" className="task-input" placeholder="Task Type" required 
+            name='tasktype' onChange={(e)=>{
+                settasktype(e.target.value)
+            }}  
+            />
             <br />
 
             <div className="btndiv">

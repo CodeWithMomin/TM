@@ -1,19 +1,24 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-// Define the User schema with an array field for registration details
-const UserSchema = {
-    name: String,
-    role: String,
-    email: String,
-    password: String,
-    tasks: { type: [String], default: [] },  // Array to store registration details
-};
+// Task Schema (Embedded inside UserSchema)
+const TaskSchema = new mongoose.Schema({
+    title: { type: String, required: true },
+    type: { type: String, required: true },  // e.g., "work", "personal"
+    description: { type: String },
+    addedOn: { type: Date, default: Date.now }, // Automatically stores the task creation date
+    completedOn: { type: Date, default: null }, // Stores the completion date (null by default)
+    status: { type: String, enum: ["pending", "in-progress", "completed"], default: "pending" },
+}, { _id: true });
+// User Schema
+const UserSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    role: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    tasks: { type: [TaskSchema], default: [] },  // Embedding TaskSchema inside UserSchema
+});
 
-// Create the user schema
-const userSchema = new mongoose.Schema(UserSchema);
+// Creating User Model
+const User = mongoose.model("User", UserSchema);
 
-// Create the User model
-const User = mongoose.model('User', userSchema);
-
-// Export the User model
 module.exports = User;

@@ -30,7 +30,7 @@ const Register = () => {
       role,
       password
     }).then(()=>{
-      console.log("success");
+      // console.log("success");
       toast.success("Registration  successfull! 🎉");
       
       setTimeout(() => {
@@ -40,7 +40,7 @@ const Register = () => {
       
     })
     .catch(()=>{
-      console.log("failure");
+      // console.log("failure");
       toast.error("Something went wrong! 😞"); // ✅ Catch error toast
       setloading(false);
     })

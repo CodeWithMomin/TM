@@ -16,14 +16,14 @@ const Profile = () => {
 
   const navigate = useNavigate();
   const token = localStorage.getItem('authToken');
- 
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000"; 
     useEffect(()=>{
       if(!triggerEffect) return;
 
       async function changePassword(){
         if(newPassword === confirmPassword){
        try{
-         const response=await axios.post('http://localhost:4000/change-password',{
+         const response=await axios.post(`${API_BASE_URL}/change-password`,{
           newPassword
         }
       ,{
@@ -51,7 +51,7 @@ const Profile = () => {
       try {
         
         
-        const response = await axios.get('http://localhost:4000/profile', {
+        const response = await axios.get('`${API_BASE_URL}/profile`', {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`

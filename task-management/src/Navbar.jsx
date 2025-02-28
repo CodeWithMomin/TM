@@ -24,7 +24,7 @@ const Navbar = () => {
 }>Register</Link></li>
   <li><Link to="/login" onClick={() => {
     setIsOpen(false)
-    toast.success('Log Out Successfully ')
+    toast.success('Please Log in Again ')
     localStorage.removeItem('authToken')
    
   }}>Login</Link></li>

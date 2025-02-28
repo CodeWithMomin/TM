@@ -4,12 +4,14 @@ import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import { ClipLoader, ScaleLoader } from 'react-spinners'
 import { useNavigate } from 'react-router-dom';
+import { Eye,EarOff, EyeOff, Turtle } from 'lucide-react';
 const Register = () => {
   const [name,setname]=useState("")
   const [email,setemail]=useState("")
   const [password,setpassword]=useState("")
   const [role,setrole]=useState("")
   const [loading ,setloading]=useState(false)
+  const [showPassword,setShowPassword]=useState(false)
  const navigate=useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevents page reload
@@ -68,7 +70,29 @@ const Register = () => {
     <br />
 
     {/* Password Field */}
-    <input type="password" name="password" placeholder="Password" required onChange={(e) => setpassword(e.target.value)} />
+    <div className="passworddiv">
+  <input
+    type={showPassword ? "text" : "password"}
+    name="password"
+    placeholder="Password"
+    required
+    onChange={(e) => setpassword(e.target.value)}
+  />
+  {showPassword ? (
+    <EyeOff
+      className="Eye"
+      size={20}
+      onClick={() => setShowPassword((prev)=>!prev)}
+    />
+  ) : (
+    <Eye
+      className="Eye"
+      size={20}
+      onClick={() => setShowPassword((prev)=>!prev)} 
+    />
+  )}
+</div>
+
     <br />
 
     {/* Submit Button */}

@@ -5,6 +5,7 @@
 .profile-container {
     max-width: 400px;
     width: 90%;
+    height: auto;
     margin: auto;
     text-align: center;
     padding: 20px;
@@ -19,7 +20,11 @@
   
   /* Profile Header */
   .profile-header {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+ 
+  }
+  .profile-header ,p ,h2,span{
+    color: antiquewhite;
   }
   
   .profile-pic {
@@ -52,10 +57,38 @@
     border: none;
     cursor: pointer;
   }
+  .profile-settings, .changepasswordiv{
+    width:100%;
+    height: auto;
+    /* border: 1px solid orange; */
+  }
+  .np{
+    width: 100%;
+    /* border: 1px solid green; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Eye {
+    position: absolute;
+    right: 10px;
+    /* top: 0%; */
+    color: black;
+    cursor: pointer;
   
-  .logout-btn {
+  }
+  .Eye:hover{
+    color: #f88c07;
+  }
+  .changebtn{
+    background: #007bff;
+    color: black;
+  }
+  .logout-btn,.updateButton {
     background: #FFA500;
     color: black;
+    margin-block: 8px;
   }
   
   /* ✅ Responsive Design */

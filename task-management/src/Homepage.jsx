@@ -22,10 +22,24 @@ const [isListening, setIsListening] = useState(false);
 
 let recognition;
 
-if("webkitSpeechRecognition" in window || "SpeechRecognition" in window){
-  recognition=new (window.webkitSpeechRecognition || window.SpeechRecognition)();
+if("webkitSpeechRecognition" in window || "SpeechRecognition" in window) // checking is your browser supporting this or not
+  {
+  recognition=new (window.webkitSpeechRecognition || window.SpeechRecognition)();   //creating new instance of speechrecognization
   recognition.continuous = false;
+  /*
+  This setting controls whether speech recognition keeps running after detecting speech.
+
+false (default behavior) → Stops listening after the user finishes speaking.
+true → Keeps listening continuously, even after the user finishes a sentence.
+
+  */
   recognition.interimResults = false;
+  /*
+    This setting controls whether to return partial results while the user is speaking.
+
+false (default behavior) → Only final transcriptions are provided.
+true → Gives real-time updates (partial text while speaking).
+  */
   recognition.lang = "en-US";
   recognition.onresult = (event) => {
       const speechText = event.results[0][0].transcript;
@@ -292,7 +306,7 @@ const resetSearch = () => {
                     <div className='stask' key={index}>
                       <span><strong>Title</strong>:{task.title}</span> <br />
                       <span><strong>Type</strong>:{task.type}</span><br />
-                      <p>Description:{task.description}</p>
+                      <span>Description:{task.description}</span>
                       <br />
                       <span>Added on:on :{Date(task.addedOn).toLocaleString()}</span>
                       <br />

@@ -63,8 +63,8 @@ const Completed = () => {
               >
                 <span><strong>Title</strong>:{task.title}</span>
                 <span><strong>Type</strong>:{task.type}</span>
-                <p className="t-dis"> {task.description}</p>
-                <span>{task.status} on :{Date(task.completedOn).toLocaleString()}</span>
+                <span className="t-dis"> description:{task.description}</span>
+                <span>CompletedOn :{Date(task.completedOn).toLocaleString()}</span>
                
               </motion.div>
             ))}

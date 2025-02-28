@@ -5,12 +5,13 @@ import { ScaleLoader } from 'react-spinners';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-
+import { Eye,EyeOff,EyeClosed } from 'lucide-react';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword,setShowPassword]=useState(false)
   const navigate = useNavigate();
 
   const handlebtnclk = async (e) => {
@@ -63,13 +64,21 @@ const Login = () => {
           <br />
 
           {/* Password Field */}
+          <div className="passworddiv">
           <input
-            type="password"
+            type={showPassword ? "text":"password"}
             name="password"
             placeholder="Password"
             required
             onChange={(e) => setPassword(e.target.value)}
           />
+         {showPassword ?<EyeOff className='Eye' size={20} onClick={()=>{
+          setShowPassword(false)
+         }}/>:<Eye className='Eye' size={20} onClick={()=>{
+          setShowPassword(true)
+         }}/>}
+         
+          </div>
           <br />
 
           {/* Submit Button */}

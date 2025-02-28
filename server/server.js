@@ -42,6 +42,30 @@ function checkAuth(req,res,next){
      
     
 }
+app.post('/change-password',body('newPassword').notEmpty(),checkAuth,(req,res)=>{
+    const userId=req.userData.userId;
+    const result=validationResult(req)
+    if(!result.isEmpty())
+        {
+           return res.send({errors:result.array()})
+        }
+        const {newPassword}=req.body;
+        console.log(newPassword);
+        User.updateOne({_id:userId},{$set:{password:newPassword}})
+        .then((result) => {
+            if (result.modifiedCount > 0) {
+                console.log("success");
+                
+              res.status(200).json({ message: "User updated successfully", result });
+            } else {
+              res.status(404).json({ message: "User not found or no changes made" });
+            }
+          })
+          .catch((error) => {
+            res.status(500).json({ message: "Update failed", error: error.message });
+          });
+        
+})
 app.post('/register',body('name','role','email','password').notEmpty(),async(req,res)=>{
     const result=validationResult(req)
     if(!result.isEmpty())

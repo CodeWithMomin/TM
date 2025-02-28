@@ -66,9 +66,10 @@ const Total = () => {
               >
                 <span><strong>Title</strong>:{task.title}</span>
                 <span><strong>Type</strong>:{task.type}</span>
-                <p className="t-dis"> {task.description}</p>
-                <span>{task.status} </span>
+                <span className="t-dis">Description: {task.description}</span>
+                <span> Status {task.status} </span>
                 <span>Added on:on :{Date(task.addedOn).toLocaleString()}</span>
+              {task.status ==="completed"&& (<span>CompletedOn:{task.completedOn}</span>)}
                
               </motion.div>
             ))}

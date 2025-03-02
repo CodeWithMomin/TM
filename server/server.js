@@ -268,6 +268,6 @@ const userinfo=await User.findById(id)
 res.send(userinfo.tasks)
 })
 app.listen(4000,()=>{
-    console.log("server is listening on http://127.0.0.1:4000")
+    console.log(`server is listening on http://127.0.0.1:${process.env.PORT}`)
     
 })

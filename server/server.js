@@ -8,8 +8,9 @@ const cors=require('cors')
 const mongoose=require('mongoose')
 app.use(express.json())
 const allowedOrigins = [
-    "https://tm-momin-zahoors-projects.vercel.app",
-    "https://tm-fe-client-ogi7kbw00-momin-zahoors-projects.vercel.app",
+    "https://tm-fe-client.vercel.app", // Main frontend domain
+    "https://tm-fe-client-f0mviovwo-momin-zahoors-projects.vercel.app", // Vercel deployment subdomain
+    "http://localhost:5173" // Allow local development
   ];
   
   const corsOptions = {

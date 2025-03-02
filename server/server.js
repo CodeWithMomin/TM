@@ -7,22 +7,12 @@ const app=express()
 const cors=require('cors')
 const mongoose=require('mongoose')
 app.use(express.json())
-const allowedOrigins = [
-    "https://tm-fe-client.vercel.app", // Main frontend domain
-    "https://tm-fe-client-f0mviovwo-momin-zahoors-projects.vercel.app", // Vercel deployment subdomain
-    "http://localhost:5173" // Allow local development
-  ];
-  
-  const corsOptions = {
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+const corsOptions = {
+    origin: "https://tm-fe-client.vercel.app", // ✅ Allow your frontend
     credentials: true,
-  };
+    methods: "GET, POST, PUT, DELETE",
+    allowedHeaders: "Content-Type, Authorization"
+};
 
 app.use(cors(corsOptions));
 

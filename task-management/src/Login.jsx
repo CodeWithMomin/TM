@@ -13,14 +13,13 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword,setShowPassword]=useState(false)
   const navigate = useNavigate();
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000"; 
-  console.log('API Base URL:', API_BASE_URL);  
+
   const handlebtnclk = async (e) => {
     e.preventDefault(); // Prevents form reload
     setLoading(true);
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/login`, {
+      const response = await axios.post('http://localhost:4000/login', {
         email,
         password
       });

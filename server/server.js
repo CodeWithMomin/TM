@@ -42,6 +42,9 @@ function checkAuth(req,res,next){
      
     
 }
+app.get('/welcome',(req,res)=>{
+    res.send("welcome to task manager")
+})
 app.post('/change-password',body('newPassword').notEmpty(),checkAuth,(req,res)=>{
     const userId=req.userData.userId;
     const result=validationResult(req)

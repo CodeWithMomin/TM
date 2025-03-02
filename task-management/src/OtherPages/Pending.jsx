@@ -8,10 +8,9 @@ import Header from '../Header';
 const Pending = () => {
   const [tasks,setTasks]=useState([])
   const token=localStorage.getItem('authToken')
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000"; 
   async function fetchData(){
     try{
-      const response= await axios.get(`${API_BASE_URL}/fetch-pending`,{
+      const response= await axios.get('http://localhost:4000/fetch_pending',{
         headers: {  // ✅ Headers should be outside the body
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`

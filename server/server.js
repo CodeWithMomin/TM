@@ -8,7 +8,7 @@ const cors=require('cors')
 const mongoose=require('mongoose')
 app.use(express.json())
 const corsOptions = {
-    origin: "https://tm-fe-client.vercel.app", // ✅ Allow your frontend
+    origin: "*", // ✅ Allow your frontend
     credentials: true,
     methods: "GET, POST, PUT, DELETE",
     allowedHeaders: "Content-Type, Authorization"

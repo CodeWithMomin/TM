@@ -7,10 +7,21 @@ const app=express()
 const cors=require('cors')
 const mongoose=require('mongoose')
 app.use(express.json())
-const corsOptions={
-    origin:"https://tm-momin-zahoors-projects.vercel.app/",
-    credentials:true
-}
+const allowedOrigins = [
+    "https://tm-momin-zahoors-projects.vercel.app",
+    "https://tm-fe-client-ogi7kbw00-momin-zahoors-projects.vercel.app",
+  ];
+  
+  const corsOptions = {
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  };
 
 app.use(cors(corsOptions));
 

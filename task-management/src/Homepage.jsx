@@ -83,7 +83,7 @@ async function searchTasks()
 async function deleteTask(task) {
   const taskid = task._id;
   try {
-      const response = await axios.delete(`http://localhost:4000/delete-task/${taskid}`, {
+      const response = await axios.delete(`https://tm-momin-zahoors-projects.vercel.app/delete-task/${taskid}`, {
           headers: {
               'Authorization': `Bearer ${token}`
           }
@@ -105,7 +105,7 @@ async function deleteTask(task) {
 async function editTask(task){
   const taskid=task._id;
  try{
-    const response=await axios.put('http://localhost:4000/edit-task',{taskid},{
+    const response=await axios.put('https://tm-momin-zahoors-projects.vercel.app/edit-task',{taskid},{
      
       
         headers: {
@@ -128,7 +128,7 @@ async function completeTask(task) {
 
   try {
     const response = await axios.put(
-      'http://localhost:4000/complete-task', 
+      'https://tm-momin-zahoors-projects.vercel.app/complete-task', 
       {taskid} ,  // ✅ Task ID should be in request body
       {
         headers: {  // ✅ Headers should be outside the body
@@ -151,7 +151,7 @@ async function completeTask(task) {
 
 async function fetchTasks(){
   try{
-    const alltasks=await axios.get('http://localhost:4000/get-tasks',{
+    const alltasks=await axios.get('https://tm-momin-zahoors-projects.vercel.app/get-tasks',{
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
@@ -182,7 +182,7 @@ async function fetchTasks(){
     
     try {
       const response = await axios.post(
-        'http://localhost:4000/add-task',
+        'https://tm-momin-zahoors-projects.vercel.app/add-task',
         {
           title,
           description,

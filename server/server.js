@@ -7,7 +7,12 @@ const app=express()
 const cors=require('cors')
 const mongoose=require('mongoose')
 app.use(express.json())
-app.use(cors())
+const corsOptions={
+    origin:"https://tm-momin-zahoors-projects.vercel.app/",
+    credentials:true
+}
+
+app.use(cors(corsOptions));
 
 mongoose.connect('mongodb://0.0.0.0:27017/Users')
 .then(() => {

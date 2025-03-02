@@ -23,7 +23,7 @@ const Profile = () => {
       async function changePassword(){
         if(newPassword === confirmPassword){
        try{
-         const response=await axios.post('http://localhost:4000/change-password',{
+         const response=await axios.post('https://tm-momin-zahoors-projects.vercel.app/change-password',{
           newPassword
         }
       ,{
@@ -51,7 +51,7 @@ const Profile = () => {
       try {
         
         
-        const response = await axios.get('http://localhost:4000/profile', {
+        const response = await axios.get('https://tm-momin-zahoors-projects.vercel.app/profile', {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`

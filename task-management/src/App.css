@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+ 
 }
 
 html {
@@ -25,6 +26,7 @@ font-family: 'Roboto';
   height: 80px;
   /* border: 1px solid wheat; */
   display: flex;
+  
 
 }
 .header .logo{
@@ -69,6 +71,17 @@ font-family: 'Roboto';
   padding: 15px 20px;
   /* border: 1px  solid gray; */
   
+}
+.darkmodediv{
+  width:100px;
+  height: 100%;
+  /* border: 1px solid white; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mode{
+  cursor: pointer;
 }
 
 .nav-container {
@@ -229,4 +242,67 @@ input::placeholder{
   .nav-links li {
     margin: 10px 0;
   }
+}
+
+
+
+
+/* Light Mode Css */
+/* Default Dark Mode */
+
+/* Light Mode */
+.light-mode {
+  background-color: #ffffff;
+  color: #121212;
+}
+.light-mode .header .logo p{
+  color: black;
+}
+/* Navbar */
+.navbar {
+  background-color: #121212
+}
+.light-mode .nav-links a{
+  color: #121212;
+}
+.light-mode .nav-links a:hover{
+font-weight: 500;
+}
+
+/* Light mode navbar */
+.light-mode .navbar {
+  background-color: white;
+  color: black;
+}
+
+/* Buttons */
+button {
+  background: #FFA500;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Light mode button */
+.light-mode button {
+  background: #222;
+  color: white;
+}
+.light-mode span{
+  color: #121212;
+}
+.light-mode .regformcontainer form p{
+  color: black;
+}
+.light-mode form{
+  border: 1px solid grey;
+  padding: 15px;
+  border-radius: 10px;
+}
+.light-mode input{
+  border: 1px solid rgb(226, 239, 251);
+}
+.light-mode .darkmodediv{
+  background-color: white;
 }

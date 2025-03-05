@@ -417,3 +417,22 @@ span{
         gap: 10px;
     }
 }
+.light-mode .task-summary .card{
+    background-color: rgb(243, 242, 242);
+    
+}
+.light-mode .task-summary .card a{
+    color: black;
+}
+.light-mode .main-content p{
+    color: black;
+}
+.light-mode .task-grid .task-card{
+    background-color: rgb(243, 242, 242);
+}
+.light-mode .task-grid .task-card button{
+    background-color:  rgb(17, 181, 251);
+}
+.light-mode .navbar{
+    background-color: white;
+}

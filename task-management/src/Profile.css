@@ -110,4 +110,18 @@
       margin-bottom: 10px;
     }
   }
-  
+  .light-mode .profile-container{
+    background: white;
+  }
+  .light-mode .profile-container .profile-header p,h2 {
+    color:black;
+  }
+  .light-mode .profile-stats .stat-box{
+    background-color: rgb(243, 242, 242);
+  }
+  .light-mode .profile-stats .stat-box ,p{
+    color:black;
+  }
+ .light-mode button{
+  background-color: #007bff;
+ }

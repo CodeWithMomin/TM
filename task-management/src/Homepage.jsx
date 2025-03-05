@@ -10,6 +10,7 @@ import { Search,Mic,X } from "lucide-react";
 
 const Homepage = () => {
   const [tasks, setTasks] = useState([]);
+  // const [taskTypes,setTaskTypes]=useState([])
   const [loading, setLoading] = useState(false);
 const [title,settitle]=useState('')
 const [description,setDescription]=useState('')
@@ -19,6 +20,9 @@ const [searchResults,setSearchResults]=useState([])
 const [showModel,setShowModel]=useState(false)
 const token=localStorage.getItem('authToken')
 const [isListening, setIsListening] = useState(false);
+
+
+
 
 let recognition;
 
@@ -80,6 +84,7 @@ async function searchTasks()
   }
 
 }
+
 async function deleteTask(task) {
   const taskid = task._id;
   try {
@@ -159,9 +164,9 @@ async function fetchTasks(){
       
       
     })
-    //  console.log(alltasks.data);
+   // console.log(alltasks.data);
     setTasks(alltasks.data)
-    
+   
   }
   catch(error)
   {
@@ -263,12 +268,12 @@ const resetSearch = () => {
 
         <div className="search-container">
         <div className="searchdiv">
-      {/* Mic Button (Left Side) */}
-      <Mic
+       {/* Mic Button (Left Side) */}
+       <Mic
         size={18}
         className={`mic-icon ${isListening ? "listening" : ""}`} // Add a class when listening
         onClick={isListening ? stopListening : startListening}
-      />
+       />
 
       {/* Search Input */}
       <input

@@ -7,14 +7,8 @@ const app=express()
 const cors=require('cors')
 const mongoose=require('mongoose')
 app.use(express.json())
-const corsOptions = {
-    origin: "*", // ✅ Allow your frontend
-    credentials: true,
-    methods: "GET, POST, PUT, DELETE",
-    allowedHeaders: "Content-Type, Authorization"
-};
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 mongoose.connect('mongodb://0.0.0.0:27017/Users')
 .then(() => {

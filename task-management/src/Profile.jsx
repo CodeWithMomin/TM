@@ -23,7 +23,7 @@ const Profile = () => {
       async function changePassword(){
         if(newPassword === confirmPassword){
        try{
-         const response=await axios.post('https://tm-momin-zahoors-projects.vercel.app/change-password',{
+         const response=await axios.post('http://localhost:4000/change-password',{
           newPassword
         }
       ,{
@@ -51,7 +51,7 @@ const Profile = () => {
       try {
         
         
-        const response = await axios.get('https://tm-momin-zahoors-projects.vercel.app/profile', {
+        const response = await axios.get('http://localhost:4000/profile', {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
@@ -119,6 +119,9 @@ const Profile = () => {
                 setTriggerEffect((prev)=>!prev)
                 setShowModel(false)
               }}>Change</button>
+              <button onClick={()=>{
+                 setShowModel(false)
+              }} className="changebtn">Close</button>
 
             </div>
           )}

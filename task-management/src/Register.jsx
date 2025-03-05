@@ -27,7 +27,7 @@ const Register = () => {
     //   setloading(false)
     //  }, 5000);
     // console.log(userData);
-    const response=await axios.post('https://tm-momin-zahoors-projects.vercel.app/register',{
+    const response=await axios.post('http://localhost:4000/register',{
       name,
       email,
       role,
